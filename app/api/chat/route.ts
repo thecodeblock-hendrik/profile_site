@@ -18,6 +18,7 @@ Keep answers useful and conversational, usually under 140 words. Do not use mark
 
 VERIFIED PROFILE
 - Name: Hendrik Oosthuizen. Based in South Africa.
+- Freelance business and portfolio brand: the codeblock, at thecodeblock.net.
 - Professional positioning: Regional Operations and SaaS Delivery Leader specialising in enterprise implementations, operational excellence, multi-site operations and Agile leadership.
 - Current employer: GAAP Point-of-Sale, a B2B SaaS platform.
 - Regional Operations Manager & Service Delivery Manager at GAAP Point-of-Sale, 2013 to present.
