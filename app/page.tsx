@@ -8,6 +8,18 @@ const ArrowDown = () => (
   <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v13m0 0 5-5m-5 5-5-5" /></svg>
 );
 
+const CodeblockBrand = () => (
+  <span className="codeblock-brand">
+    <span className="codeblock-mark" aria-hidden="true">
+      <i /><i /><i /><i /><i />
+    </span>
+    <span className="brand-lockup">
+      <strong><span>the</span> codeblock</strong>
+      <small>Hendrik Oosthuizen · profile</small>
+    </span>
+  </span>
+);
+
 const impact = [
   { value: "700+", label: "SaaS implementations supported" },
   { value: "40+", label: "Cross-functional team members led" },
@@ -42,9 +54,8 @@ export default function Home() {
   return (
     <main>
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="Hendrik Oosthuizen, home">
-          <span className="brand-mark">HO</span>
-          <span className="brand-name">Hendrik Oosthuizen</span>
+        <a className="brand" href="#top" aria-label="the codeblock — Hendrik Oosthuizen, home">
+          <CodeblockBrand />
         </a>
         <nav aria-label="Main navigation">
           <a href="#about">About</a>
@@ -59,7 +70,7 @@ export default function Home() {
       <section className="hero" id="top">
         <div className="hero-grid" aria-hidden="true" />
         <div className="hero-copy reveal">
-          <p className="eyebrow"><span /> Operations &amp; SaaS delivery leader</p>
+          <p className="eyebrow"><span /> thecodeblock.net · Professional profile</p>
           <h1>Turning operational<br />complexity into<br /><em>measurable progress.</em></h1>
           <p className="hero-intro">
             I lead multi-site teams, enterprise implementations, and service operations—aligning people, process, and technology to deliver lasting customer outcomes.
@@ -85,7 +96,7 @@ export default function Home() {
           </div>
         </aside>
         <div className="hero-foot">
-          <span>GAAP Point-of-Sale · 2006—Present</span>
+          <span>Hendrik Oosthuizen · Operations &amp; SaaS delivery leader</span>
           <span>Scroll to discover <ArrowDown /></span>
         </div>
       </section>
@@ -192,12 +203,12 @@ export default function Home() {
         <div className="footer-copy">
           <p className="eyebrow"><span /> Let&apos;s connect</p>
           <h2>Building what&apos;s next starts<br />with a <em>conversation.</em></h2>
-          <a className="email-link" href="mailto:thecodeblock.dev@gmail.com">thecodeblock.dev@gmail.com <ArrowUpRight /></a>
+          <a className="email-link" href="mailto:hendrik@thecodeblock.net">hendrik@thecodeblock.net <ArrowUpRight /></a>
         </div>
         <div className="footer-bottom">
-          <a className="brand" href="#top"><span className="brand-mark">HO</span><span className="brand-name">Hendrik Oosthuizen</span></a>
+          <a className="brand" href="#top" aria-label="the codeblock — back to top"><CodeblockBrand /></a>
           <div><a href="https://www.linkedin.com/in/henno-oosthuizen" target="_blank" rel="noreferrer">LinkedIn</a><a href="#portfolio">Portfolio</a></div>
-          <span>© 2026 Hendrik Oosthuizen</span>
+          <span>© 2026 thecodeblock.net</span>
         </div>
       </footer>
       <DigitalTwinChat />

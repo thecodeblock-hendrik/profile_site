@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, KeyboardEvent, useCallback, useEffect, useRef, useState } from "react";
 
 type Message = {
   role: "user" | "assistant";
@@ -21,14 +21,34 @@ export default function DigitalTwinChat() {
   const [error, setError] = useState("");
   const endRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  const closeChat = useCallback(() => {
+    setOpen(false);
+    window.requestAnimationFrame(() => triggerRef.current?.focus());
+  }, []);
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
 
   useEffect(() => {
-    if (open) window.setTimeout(() => inputRef.current?.focus(), 100);
+    if (!open || !window.matchMedia("(pointer: fine)").matches) return;
+
+    const focusTimer = window.setTimeout(() => inputRef.current?.focus(), 100);
+    return () => window.clearTimeout(focusTimer);
   }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const closeOnEscape = (event: globalThis.KeyboardEvent) => {
+      if (event.key === "Escape") closeChat();
+    };
+
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [closeChat, open]);
 
   async function ask(question: string) {
     const cleanQuestion = question.trim();
@@ -84,7 +104,9 @@ export default function DigitalTwinChat() {
                 <span><i /> AI career guide · Online</span>
               </div>
             </div>
-            <button className="twin-close" type="button" onClick={() => setOpen(false)} aria-label="Close Digital Twin chat">×</button>
+            <button className="twin-close" type="button" onClick={closeChat} aria-label="Close Digital Twin chat">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" /></svg>
+            </button>
           </header>
 
           <div className="twin-messages" aria-live="polite">
@@ -139,7 +161,7 @@ export default function DigitalTwinChat() {
         </section>
       )}
 
-      <button className={`twin-trigger ${open ? "is-open" : ""}`} type="button" onClick={() => setOpen((current) => !current)} aria-expanded={open}>
+      <button ref={triggerRef} className={`twin-trigger ${open ? "is-open" : ""}`} type="button" onClick={() => setOpen((current) => !current)} aria-expanded={open}>
         <span className="trigger-orbit"><i /><b>HO</b></span>
         <span><small>Meet my</small>Digital Twin</span>
         <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8" /></svg>
