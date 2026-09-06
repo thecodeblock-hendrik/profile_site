@@ -244,14 +244,15 @@ footer { background: #081322; color: white; padding: 110px clamp(24px, 6vw, 96px
 .twin-disclaimer { margin: 9px 16px 12px; color: #8c939d; text-align: center; font-size: 7px; text-transform: uppercase; letter-spacing: .08em; }
 
 @media (max-width: 600px) {
-  .twin-shell { right: max(8px, env(safe-area-inset-right)); bottom: max(8px, env(safe-area-inset-bottom)); }
+  .twin-shell { right: max(8px, env(safe-area-inset-right)); bottom: max(8px, env(safe-area-inset-bottom)); max-width: calc(100dvw - max(16px, env(safe-area-inset-left) + env(safe-area-inset-right))); }
   .twin-trigger { min-width: 190px; height: 58px; }
   .trigger-orbit { width: 40px; height: 40px; }
-  .twin-panel { width: calc(100vw - max(16px, env(safe-area-inset-left) + env(safe-area-inset-right))); height: calc(100svh - max(72px, env(safe-area-inset-top) + 48px) - max(8px, env(safe-area-inset-bottom))); max-height: calc(100dvh - max(72px, env(safe-area-inset-top) + 48px) - max(8px, env(safe-area-inset-bottom))); }
+  .twin-panel { width: calc(100dvw - max(16px, env(safe-area-inset-left) + env(safe-area-inset-right))); height: min(650px, calc(100dvh - max(72px, env(safe-area-inset-top) + 48px) - max(8px, env(safe-area-inset-bottom)))); max-width: 100%; overflow: hidden; }
   .twin-header { flex: 0 0 auto; min-height: 72px; padding: 12px; }
   .twin-close { width: 48px; height: 48px; }
   .twin-messages { padding: 18px 16px; }
   .twin-form { margin: 0 12px; }
+  .twin-form textarea { font-size: 16px; }
   .twin-disclaimer { margin-bottom: calc(12px + env(safe-area-inset-bottom)); }
 }
 
