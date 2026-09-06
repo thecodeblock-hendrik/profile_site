@@ -197,7 +197,7 @@ footer { background: #081322; color: white; padding: 110px clamp(24px, 6vw, 96px
 .trigger-orbit { width: 46px; height: 46px; display: grid; place-items: center; flex: 0 0 auto; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; position: relative; }
 .trigger-orbit b { font-family: Georgia, serif; font-size: 12px; letter-spacing: -.05em; }
 .trigger-orbit i { width: 6px; height: 6px; background: #78eba9; border-radius: 50%; position: absolute; right: 0; top: 4px; box-shadow: 0 0 0 3px #3d70ff; }
-.twin-trigger.is-open { opacity: 0; pointer-events: none; transform: translateY(10px); }
+.twin-trigger.is-open { position: absolute; right: 0; bottom: 0; opacity: 0; pointer-events: none; transform: translateY(10px); }
 .twin-panel { width: min(420px, calc(100vw - 32px)); height: min(650px, calc(100vh - 48px)); background: #f8f6f0; color: var(--ink); box-shadow: 0 28px 80px rgba(3, 12, 26, .32); border: 1px solid rgba(16,26,44,.14); display: flex; flex-direction: column; animation: twin-in .25s cubic-bezier(.2,.8,.2,1) both; }
 @keyframes twin-in { from { opacity: 0; transform: translateY(14px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
 .twin-header { min-height: 76px; background: #0c172a; color: white; display: flex; align-items: center; justify-content: space-between; padding: 13px 16px; }
@@ -247,7 +247,7 @@ footer { background: #081322; color: white; padding: 110px clamp(24px, 6vw, 96px
   .twin-shell { right: max(8px, env(safe-area-inset-right)); bottom: max(8px, env(safe-area-inset-bottom)); }
   .twin-trigger { min-width: 190px; height: 58px; }
   .trigger-orbit { width: 40px; height: 40px; }
-  .twin-panel { width: calc(100vw - max(16px, env(safe-area-inset-left) + env(safe-area-inset-right))); height: calc(100dvh - max(16px, env(safe-area-inset-top) + env(safe-area-inset-bottom))); }
+  .twin-panel { width: calc(100vw - max(16px, env(safe-area-inset-left) + env(safe-area-inset-right))); height: calc(100svh - max(72px, env(safe-area-inset-top) + 48px) - max(8px, env(safe-area-inset-bottom))); max-height: calc(100dvh - max(72px, env(safe-area-inset-top) + 48px) - max(8px, env(safe-area-inset-bottom))); }
   .twin-header { flex: 0 0 auto; min-height: 72px; padding: 12px; }
   .twin-close { width: 48px; height: 48px; }
   .twin-messages { padding: 18px 16px; }
