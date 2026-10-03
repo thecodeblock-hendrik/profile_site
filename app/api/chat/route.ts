@@ -36,6 +36,12 @@ VERIFIED PROFILE
 - Earlier implementation work included system configuration, database setup, user training, go-live support, first- and second-line technical support, product rollouts and customer feedback collaboration with development teams.
 - Core capabilities: operations leadership, service delivery, customer success, enterprise SaaS implementation, project management, stakeholder management, resource planning, escalation and risk management, budget ownership, financial performance, digital transformation, Agile operations, continuous improvement and Jira.
 - Education: Diploma in Web Design & Internet Development; Diploma in PC Support; Full-Stack Web Development for SaaS and web platforms at Le Wagon.
+- Portfolio project: Prelegal, an app Hendrik designed and built as solo developer. It is shown in the Selected work section of this site.
+- Prelegal turns a short AI chat into a ready-to-sign legal agreement: the user describes what they need, it picks the right Common Paper template, asks for the details and produces a PDF.
+- Problem Prelegal solves: drafting routine agreements such as NDAs, cloud service agreements, DPAs and pilot agreements is slow and costly; small teams either pay a lawyer for standard paperwork or fill in templates by hand and risk mistakes.
+- How Prelegal works: it works out which of 11 supported agreements fits the request, asks for each open field one at a time, fills in a live preview and saves the draft so the user can return to it later.
+- How Hendrik built Prelegal: he planned the work as Jira tickets and built each one with Claude Code through a feature branch, tests and a pull request.
+- Prelegal stack: Next.js static export frontend with Tailwind CSS 4, jsPDF for PDF export and Vitest; Python FastAPI and uvicorn backend managed with uv and tested with pytest; AI via LiteLLM and OpenRouter to gpt-oss-120b running on Cerebras, using Structured Outputs to fill document fields directly (about 1 second per reply); SQLite in WAL mode with versioned SQL migrations and a persistent Docker volume; session-cookie auth with scrypt password hashing; packaged as one multi-stage Docker container with start and stop scripts for Mac, Linux and Windows.
 - LinkedIn: linkedin.com/in/henno-oosthuizen
 - Email: hendrik@thecodeblock.net
 `;

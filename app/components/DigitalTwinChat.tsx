@@ -11,6 +11,7 @@ const suggestions = [
   "What is your leadership style?",
   "Tell me about your SaaS experience",
   "What impact have you delivered?",
+  "Tell me about Prelegal",
 ];
 
 export default function DigitalTwinChat() {

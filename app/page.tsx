@@ -1,4 +1,10 @@
+import Image from "next/image";
 import DigitalTwinChat from "./components/DigitalTwinChat";
+import prelegalDraft from "./images/prelegal/draft-1920.png";
+import prelegalLogin from "./images/prelegal/login-1366.png";
+import prelegalDelete from "./images/prelegal/documents-delete-dialog-1366.png";
+import prelegalDraftMobile from "./images/prelegal/draft-375.png";
+import prelegalDocumentsMobile from "./images/prelegal/documents-375.png";
 
 const ArrowUpRight = () => (
   <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8" /></svg>
@@ -50,6 +56,41 @@ const expertise = [
   },
 ];
 
+const projects = [
+  {
+    name: "Prelegal",
+    tag: "Featured project · AI legal drafting",
+    pitch: "Prelegal turns a short AI chat into a ready-to-sign legal agreement. Describe what you need, and it picks the right Common Paper template, asks for the details and gives you a PDF.",
+    facts: [
+      {
+        label: "Problem",
+        text: "Drafting routine agreements such as NDAs, cloud service agreements, DPAs and pilot agreements is slow and costly. Small teams either pay a lawyer for standard paperwork or fill in templates by hand and risk mistakes.",
+      },
+      {
+        label: "Solution",
+        text: "Prelegal works out which of 11 supported agreements fits the request, asks for each open field one at a time, fills in a live preview and saves the draft to come back to later.",
+      },
+      {
+        label: "Role",
+        text: "Solo developer. I planned the work as Jira tickets and built each one with Claude Code through a feature branch, tests and a pull request.",
+      },
+    ],
+    highlights: [
+      { value: "11", label: "Agreement templates" },
+      { value: "~1s", label: "Per AI reply" },
+      { value: "1", label: "Docker container" },
+    ],
+    stack: ["Next.js", "Tailwind CSS 4", "jsPDF", "FastAPI", "Python", "SQLite", "LiteLLM", "OpenRouter", "Cerebras", "Docker", "Vitest", "pytest"],
+    hero: { src: prelegalDraft, alt: "Prelegal drafting a mutual NDA: AI chat on the left, live agreement preview on the right" },
+    gallery: [
+      { src: prelegalLogin, alt: "Prelegal sign-in page", kind: "desktop" },
+      { src: prelegalDelete, alt: "Prelegal document list with a delete confirmation dialog", kind: "desktop" },
+      { src: prelegalDraftMobile, alt: "Prelegal drafting chat on a phone", kind: "mobile" },
+      { src: prelegalDocumentsMobile, alt: "Prelegal saved documents on a phone", kind: "mobile" },
+    ],
+  },
+];
+
 export default function Home() {
   return (
     <main>
@@ -61,6 +102,7 @@ export default function Home() {
           <a href="#about">About</a>
           <a href="#journey">Journey</a>
           <a href="#expertise">Expertise</a>
+          <a href="#portfolio">Work</a>
         </nav>
         <a className="header-cta" href="mailto:hendrik@thecodeblock.net">
           Let&apos;s talk <ArrowUpRight />
@@ -191,12 +233,46 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="portfolio-callout" id="portfolio">
-        <div>
-          <p className="eyebrow"><span /> Portfolio</p>
-          <h2>Selected work and case studies<br />are coming soon.</h2>
+      <section className="section work" id="portfolio">
+        <div className="section-label"><span>05</span> Selected work</div>
+        <div className="work-head">
+          <h2>From running operations<br />to <em>building products.</em></h2>
+          <p>Software I have designed and built end to end, using the same delivery discipline I bring to operations.</p>
         </div>
-        <div className="soon-mark">In progress <span>↗</span></div>
+        {projects.map((project) => (
+          <article className="project" key={project.name}>
+            <div className="project-info">
+              <p className="eyebrow"><span /> {project.tag}</p>
+              <h3>{project.name}</h3>
+              <p className="project-pitch">{project.pitch}</p>
+              <dl className="project-facts">
+                {project.facts.map((fact) => (
+                  <div key={fact.label}><dt>{fact.label}</dt><dd>{fact.text}</dd></div>
+                ))}
+              </dl>
+              <div className="project-highlights">
+                {project.highlights.map((item) => (
+                  <div key={item.label}><strong>{item.value}</strong><span>{item.label}</span></div>
+                ))}
+              </div>
+              <div className="skills-row">
+                {project.stack.map((tech) => <span key={tech}>{tech}</span>)}
+              </div>
+            </div>
+            <div className="project-media">
+              <a className="project-hero" href={project.hero.src.src} target="_blank" rel="noreferrer">
+                <Image src={project.hero.src} alt={project.hero.alt} placeholder="blur" sizes="(max-width: 900px) 100vw, 60vw" />
+              </a>
+              <div className="project-gallery">
+                {project.gallery.map((shot) => (
+                  <a className={shot.kind} href={shot.src.src} target="_blank" rel="noreferrer" key={shot.alt}>
+                    <Image src={shot.src} alt={shot.alt} placeholder="blur" sizes="(max-width: 600px) 50vw, 20vw" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </article>
+        ))}
       </section>
 
       <footer>
