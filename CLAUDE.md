@@ -34,7 +34,7 @@ Personal portfolio site for Hendrik Oosthuizen, branded "the codeblock" (https:/
 ## Configuration
 
 - `.env` must define `OPENROUTER_API_KEY`. Without it `/api/chat` returns 503.
-- Chat facts live in `CAREER_CONTEXT` in `app/api/chat/route.ts`. Only add verified facts; contact email is thecodeblock.dev@gmail.com.
+- Chat facts live in `CAREER_CONTEXT` in `app/api/chat/route.ts`. Only add verified facts; contact email is hendrik@thecodeblock.net.
 
 ## Status (2026-10-03)
 
