@@ -62,7 +62,7 @@ export default function Home() {
           <a href="#journey">Journey</a>
           <a href="#expertise">Expertise</a>
         </nav>
-        <a className="header-cta" href="mailto:thecodeblock.dev@gmail.com">
+        <a className="header-cta" href="mailto:hendrik@thecodeblock.net">
           Let&apos;s talk <ArrowUpRight />
         </a>
       </header>
