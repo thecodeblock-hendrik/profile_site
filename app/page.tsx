@@ -63,6 +63,10 @@ const projects = [
     pitch: "Prelegal turns a short AI chat into a ready-to-sign legal agreement. Describe what you need, and it picks the right Common Paper template, asks for the details and gives you a PDF.",
     facts: [
       {
+        label: "Context",
+        text: "Built during AI Coder, the second of six courses in The Complete AI Curriculum by Ed Donner. The UI design and application logic are my own and differ from the course reference project.",
+      },
+      {
         label: "Problem",
         text: "Drafting routine agreements such as NDAs, cloud service agreements, DPAs and pilot agreements is slow and costly. Small teams either pay a lawyer for standard paperwork or fill in templates by hand and risk mistakes.",
       },
@@ -80,6 +84,7 @@ const projects = [
       { value: "~1s", label: "Per AI reply" },
       { value: "1", label: "Docker container" },
     ],
+    repo: "https://github.com/thecodeblock-hendrik/prelegal",
     stack: ["Next.js", "Tailwind CSS 4", "jsPDF", "FastAPI", "Python", "SQLite", "LiteLLM", "OpenRouter", "Cerebras", "Docker", "Vitest", "pytest"],
     hero: { src: prelegalDraft, alt: "Prelegal drafting a mutual NDA: AI chat on the left, live agreement preview on the right" },
     gallery: [
@@ -258,6 +263,7 @@ export default function Home() {
               <div className="skills-row">
                 {project.stack.map((tech) => <span key={tech}>{tech}</span>)}
               </div>
+              <a className="project-link" href={project.repo} target="_blank" rel="noreferrer">View code on GitHub <ArrowUpRight /></a>
             </div>
             <div className="project-media">
               <a className="project-hero" href={project.hero.src.src} target="_blank" rel="noreferrer">

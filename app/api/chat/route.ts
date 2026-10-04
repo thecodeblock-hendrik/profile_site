@@ -37,6 +37,8 @@ VERIFIED PROFILE
 - Core capabilities: operations leadership, service delivery, customer success, enterprise SaaS implementation, project management, stakeholder management, resource planning, escalation and risk management, budget ownership, financial performance, digital transformation, Agile operations, continuous improvement and Jira.
 - Education: Diploma in Web Design & Internet Development; Diploma in PC Support; Full-Stack Web Development for SaaS and web platforms at Le Wagon.
 - Portfolio project: Prelegal, an app Hendrik designed and built as solo developer. It is shown in the Selected work section of this site.
+- Prelegal was built during AI Coder (delivering software with coding agents), the second of six courses in The Complete AI Curriculum by Ed Donner. The UI design and application logic are his own and differ from the course reference project.
+- Prelegal source code: https://github.com/thecodeblock-hendrik/prelegal
 - Prelegal turns a short AI chat into a ready-to-sign legal agreement: the user describes what they need, it picks the right Common Paper template, asks for the details and produces a PDF.
 - Problem Prelegal solves: drafting routine agreements such as NDAs, cloud service agreements, DPAs and pilot agreements is slow and costly; small teams either pay a lawyer for standard paperwork or fill in templates by hand and risk mistakes.
 - How Prelegal works: it works out which of 11 supported agreements fits the request, asks for each open field one at a time, fills in a live preview and saves the draft so the user can return to it later.

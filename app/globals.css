@@ -129,6 +129,7 @@ em { color: #89a8ff; font-family: Georgia, 'Times New Roman', serif; font-weight
 .project-highlights div:last-child { border: 0; }
 .project-highlights strong { font-family: Georgia, serif; font-weight: 400; font-size: 28px; letter-spacing: -.04em; }
 .project-highlights span { color: var(--muted); font-size: 9px; text-transform: uppercase; letter-spacing: .08em; }
+.project-link { margin-top: 26px; display: inline-flex; align-items: center; gap: 9px; border-bottom: 1px solid var(--ink); padding: 6px 0; font-size: 12px; }
 .project-media { display: flex; flex-direction: column; gap: 14px; }
 .project-media a { display: block; min-width: 0; background: white; border: 1px solid var(--line); overflow: hidden; transition: transform .2s; }
 .project-media a:hover { transform: translateY(-3px); }
