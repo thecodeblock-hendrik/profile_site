@@ -18,7 +18,8 @@ Personal portfolio site for Hendrik Oosthuizen, branded "the codeblock" (https:/
 | Path | Purpose |
 |---|---|
 | `app/layout.tsx` | Root layout, metadata, viewport |
-| `app/page.tsx` | Portfolio page: hero, impact, about, journey, expertise, education, portfolio callout |
+| `app/page.tsx` | Portfolio page: hero, impact, about, journey, expertise, education, selected work (`projects` list) |
+| `app/images/` | Project screenshots, statically imported for `next/image` |
 | `app/globals.css` | All styling and responsive rules |
 | `app/components/DigitalTwinChat.tsx` | Client chat widget, posts to `/api/chat` |
 | `app/api/chat/route.ts` | Server route calling OpenRouter (`openai/gpt-oss-120b`) with a verified career profile as system prompt |
@@ -38,6 +39,7 @@ Personal portfolio site for Hendrik Oosthuizen, branded "the codeblock" (https:/
 
 ## Status (2026-10-03)
 
-- Portfolio page and Digital Twin chat are complete and merged (PRs #1–#5). Latest work: chat window UX, close button, email update.
+- Portfolio page and Digital Twin chat are complete. Selected work section showcases Prelegal (CBS-1); the chat knows Prelegal facts.
+- Work is tracked in Jira space CBS (thecodeblockdev.atlassian.net).
 - `node_modules/` and `.next/` were untracked from git (they are in `.gitignore`).
 - No tests yet; `npm run lint` is the only check.
