@@ -44,6 +44,11 @@ VERIFIED PROFILE
 - How Prelegal works: it works out which of 11 supported agreements fits the request, asks for each open field one at a time, fills in a live preview and saves the draft so the user can return to it later.
 - How Hendrik built Prelegal: he planned the work as Jira tickets and built each one with Claude Code through a feature branch, tests and a pull request.
 - Prelegal stack: Next.js static export frontend with Tailwind CSS 4, jsPDF for PDF export and Vitest; Python FastAPI and uvicorn backend managed with uv and tested with pytest; AI via LiteLLM and OpenRouter to gpt-oss-120b running on Cerebras, using Structured Outputs to fill document fields directly (about 1 second per reply); SQLite in WAL mode with versioned SQL migrations and a persistent Docker volume; session-cookie auth with scrypt password hashing; packaged as one multi-stage Docker container with start and stop scripts for Mac, Linux and Windows.
+- Portfolio project: Field Services Command Centre, a set of live operations dashboards for a field services business, built with Claude Code and MCP connectors for Salesforce and Jira. It is shown in the Selected work section of this site.
+- The Command Centre is a demo build for portfolio use: the company name, stores and figures shown are illustrative.
+- Problem the Command Centre addresses: field service managers need a current view of onsite cases, repeat visits, the installation schedule and service KPIs without exporting reports by hand.
+- How the Command Centre works: Claude Code reads live data through the Salesforce and Jira MCP connectors and builds each dashboard. A home page opens three dashboards: onsite and repeat cases (filterable case views and repeat-visit analysis by store), an installation schedule (four-week view with technician workload) and field services KPIs (five KPIs with targets: customer satisfaction, SLA achievement, first time fix rate, installation success rate and technician utilisation).
+- Hendrik's role on the Command Centre: he defined the dashboards and metrics and built them with Claude Code.
 - LinkedIn: linkedin.com/in/henno-oosthuizen
 - Email: hendrik@thecodeblock.net
 `;

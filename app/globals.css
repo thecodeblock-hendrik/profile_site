@@ -116,7 +116,17 @@ em { color: #89a8ff; font-family: Georgia, 'Times New Roman', serif; font-weight
 .work-head { margin: 70px 0 80px 25%; display: flex; justify-content: space-between; align-items: flex-end; gap: 70px; }
 .work-head h2 { margin: 0; font-size: clamp(40px, 4.5vw, 66px); line-height: 1.04; letter-spacing: -.05em; font-weight: 400; }
 .work-head > p { max-width: 330px; color: var(--muted); line-height: 1.7; font-size: 13px; margin: 0; }
-.project { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr); gap: clamp(40px, 5vw, 80px); padding-top: 50px; border-top: 1px solid var(--line); }
+.work-tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-bottom: 20px; }
+.work-tile { display: flex; flex-direction: column; padding: 0; background: white; border: 1px solid var(--line); color: inherit; font: inherit; text-align: left; cursor: pointer; transition: transform .2s, border-color .2s, box-shadow .2s; }
+.work-tile:hover { transform: translateY(-3px); }
+.work-tile.selected { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
+.work-tile img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; border-bottom: 1px solid var(--line); }
+.work-tile > div { padding: 28px; display: flex; flex-direction: column; align-items: flex-start; flex: 1; }
+.work-tile h3 { margin: 0 0 14px; font-size: 30px; line-height: 1.05; letter-spacing: -.04em; font-weight: 400; }
+.work-tile > div > p:not(.eyebrow) { margin: 0; color: #586273; font-size: 13px; line-height: 1.7; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.work-tile .project-link { margin-top: auto; }
+.work-tile .eyebrow { margin-bottom: 16px; }
+.project { margin-top: 90px; scroll-margin-top: 90px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr); gap: clamp(40px, 5vw, 80px); padding-top: 50px; border-top: 1px solid var(--line); }
 .project-info .eyebrow { margin-bottom: 22px; }
 .project-info h3 { margin: 0 0 20px; font-size: clamp(40px, 4vw, 58px); line-height: 1; letter-spacing: -.05em; font-weight: 400; }
 .project-pitch { margin: 0 0 34px; font-size: 16px; line-height: 1.65; }
@@ -138,6 +148,8 @@ em { color: #89a8ff; font-family: Georgia, 'Times New Roman', serif; font-weight
 .project-gallery { display: flex; gap: 14px; align-items: flex-start; }
 .project-gallery .desktop { flex: 1.778; }
 .project-gallery .mobile { flex: .462; }
+.project-gallery { flex-wrap: wrap; }
+.project-gallery .dashboard { flex: 1 1 calc(50% - 7px); }
 
 footer { background: #081322; color: white; padding: 110px clamp(24px, 6vw, 96px) 35px; }
 .footer-copy h2 { font-size: clamp(50px, 6vw, 88px); font-weight: 400; letter-spacing: -.06em; line-height: .98; margin: 0 0 55px; }
@@ -164,6 +176,7 @@ footer { background: #081322; color: white; padding: 110px clamp(24px, 6vw, 96px
   .about-columns, .journey-head, .expertise-head, .work-head { margin-left: 0; padding-left: 0; }
   .work-head { flex-direction: column; align-items: flex-start; }
   .project { grid-template-columns: 1fr; }
+  .work-tiles { grid-template-columns: 1fr; }
   .role { grid-template-columns: 1fr 2fr; }
   .role ul { grid-column: 2; }
   .expertise-head { flex-direction: column; align-items: flex-start; }
