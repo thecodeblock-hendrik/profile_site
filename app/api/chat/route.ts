@@ -3,10 +3,11 @@ import { NextRequest, NextResponse } from "next/server";
 export const runtime = "nodejs";
 
 const SITE_URL = "https://thecodeblock.net";
+const SITE_ORIGINS = [SITE_URL, "https://www.thecodeblock.net"];
 const MAX_BODY_CHARS = 32_000;
 const MAX_MESSAGES = 10;
 const ALLOWED_ORIGINS = new Set([
-  SITE_URL,
+  ...SITE_ORIGINS,
   ...(process.env.NODE_ENV === "development" ? ["http://localhost:3000"] : []),
 ]);
 
