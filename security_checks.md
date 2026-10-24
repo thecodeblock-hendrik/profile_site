@@ -63,6 +63,8 @@ Edit `app/api/chat/route.ts`, one change at a time.
 
 Decision: hosted on Vercel, so use Vercel WAF Rate Limiting (all plans, Hobby gets 1 rule). No Redis or Upstash and no code change needed. An in-memory limiter in `route.ts` is unreliable on serverless because each instance has its own memory.
 
+Live finding after merge: the site is served at `www.thecodeblock.net` (apex redirects to it), so the Origin allowlist also needs `https://www.thecodeblock.net`. Fixed in a follow-up PR.
+
 - [x] Ask the host/edge where the site runs and whether it offers rate limiting (Vercel; WAF Rate Limiting is available on all plans)
 - [ ] Hendrik: set a hard monthly spend limit on the OpenRouter key (OpenRouter dashboard, Keys, set a credit limit on the key)
 - [ ] Hendrik: Vercel project, Firewall, Configure, New Rule: name `chat-rate-limit`; If Request Path equals `/api/chat`; Then Rate Limit, Fixed Window, 60s, 10 requests, key IP; action Log first
