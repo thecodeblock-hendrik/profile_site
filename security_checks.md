@@ -85,10 +85,16 @@ Live finding after merge: the site is served at `www.thecodeblock.net` (apex red
 
 ## Step 9 - Final verification
 
-- [ ] `npm audit --omit=dev` shows 0 vulnerabilities
-- [ ] `npm run lint` and `npm run build` pass
-- [ ] Re-run the curl tests from Steps 3, 4, 6 and 7
-- [ ] Manual browser test of the full site and chat
-- [ ] Update `security.md`: mark each finding fixed or accepted
-- [ ] Open PR, merge, deploy, and re-check headers on the live site
-- [ ] Schedule a recurring `npm audit` (monthly)
+- [x] `npm audit --omit=dev` shows 0 vulnerabilities (clean install from lockfile: 0 vulnerabilities, including dev dependencies)
+- [x] `npm run lint` and `npm run build` pass
+- [x] Re-run the curl tests from Steps 3, 4, 6 and 7 (local: Steps 3, 4, 7 suites; live: headers, 429 limit confirmed in Step 7; Vercel rule still enabled)
+- [x] Manual browser test of the full site and chat (live www.thecodeblock.net: 7/7 images, clean console, chat answered)
+- [x] Update `security.md`: mark each finding fixed or accepted (Status column added to the summary table)
+- [x] Open PR, merge, deploy, and re-check headers on the live site (PRs #10-#13 merged and live; headers re-checked on www; /linkedin.pdf returns 404)
+- [ ] Schedule a recurring `npm audit` (monthly) (not done: needs a decision, e.g. a Claude Code scheduled routine or a GitHub Dependabot setting)
+
+## Still open
+
+- [ ] Hendrik: set the OpenRouter credit limit on the API key (Step 7)
+- [ ] Hendrik: decide on purging `linkedin.pdf` from git history (Step 8)
+- [ ] Hendrik: decide how to run the monthly `npm audit` (Step 9)

@@ -6,18 +6,18 @@ Findings marked **Verified** were confirmed by running `npm audit` or reading th
 
 ## Summary
 
-| # | Severity | Finding |
-|---|---|---|
-| 1 | Critical | Vulnerable Next.js, sharp and source-map-js (Verified) |
-| 2 | High | No rate limiting on `/api/chat`, which spends a paid API key (Verified) |
-| 3 | Medium | No security headers (Verified) |
-| 4 | Medium | Request body size unbounded before validation (Verified) |
-| 5 | Medium | Client can forge `assistant` turns (prompt injection) (Verified) |
-| 6 | Medium | No Origin / Content-Type check on the chat endpoint (Verified) |
-| 7 | Low | Upstream status codes and account state leaked to visitors (Verified) |
-| 8 | Low | `HTTP-Referer` derived from request origin (Verified) |
-| 9 | Low | Client shows raw JSON parse errors on non-JSON replies |
-| 10 | Low | `linkedin.pdf` is tracked in git |
+| # | Severity | Finding | Status |
+|---|---|---|---|
+| 1 | Critical | Vulnerable Next.js, sharp and source-map-js (Verified) | Fixed (steps 1-2): Next 16.4.3, `npm audit` 0 vulnerabilities, image optimizer restricted |
+| 2 | High | No rate limiting on `/api/chat`, which spends a paid API key (Verified) | Fixed (step 7): Vercel WAF rule, 10 requests/60s per IP, tested live. Open: OpenRouter credit limit (owner) |
+| 3 | Medium | No security headers (Verified) | Fixed (step 6): CSP, nosniff, Referrer-Policy, Permissions-Policy, HSTS, `frame-ancestors 'none'` |
+| 4 | Medium | Request body size unbounded before validation (Verified) | Fixed (step 3a): 32 KB body cap, last 10 messages validated |
+| 5 | Medium | Client can forge `assistant` turns (prompt injection) (Verified) | Mitigated (steps 3a, 3c): last message must be from the user, prompt rule added. Cannot be fully prevented without server-held history |
+| 6 | Medium | No Origin / Content-Type check on the chat endpoint (Verified) | Fixed (step 3b, follow-up PR #11): Origin allowlist includes the `www` host. Content-Type required |
+| 7 | Low | Upstream status codes and account state leaked to visitors (Verified) | Fixed (step 4): generic 503, details only in server logs |
+| 8 | Low | `HTTP-Referer` derived from request origin (Verified) | Fixed (step 4): constant site URL |
+| 9 | Low | Client shows raw JSON parse errors on non-JSON replies | Fixed (steps 5, 7): fixed fallback message, friendly 429 message |
+| 10 | Low | `linkedin.pdf` is tracked in git | Partly fixed (step 8): removed from the repo and gitignored. History purge not done (owner decision) |
 
 ## 1. Vulnerable dependencies (Critical)
 
