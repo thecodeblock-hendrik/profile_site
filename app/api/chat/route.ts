@@ -2,10 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 
+const SITE_URL = "https://thecodeblock.net";
 const MAX_BODY_CHARS = 32_000;
 const MAX_MESSAGES = 10;
 const ALLOWED_ORIGINS = new Set([
-  "https://thecodeblock.net",
+  SITE_URL,
   ...(process.env.NODE_ENV === "development" ? ["http://localhost:3000"] : []),
 ]);
 
@@ -135,7 +136,7 @@ export async function POST(request: NextRequest) {
       headers: {
         Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
-        "HTTP-Referer": request.nextUrl.origin,
+        "HTTP-Referer": SITE_URL,
         "X-Title": "Hendrik Oosthuizen Digital Twin",
       },
       body: JSON.stringify({
@@ -157,15 +158,16 @@ export async function POST(request: NextRequest) {
 
     if (!response.ok) {
       console.error("OpenRouter request failed", response.status, data?.error?.message);
-      const message =
-        response.status === 401
-          ? "The Digital Twin API key is not valid."
-          : response.status === 402
-            ? "The Digital Twin account needs OpenRouter credits."
-            : response.status === 429
-              ? "The Digital Twin is receiving too many questions. Please try again shortly."
-              : "The Digital Twin is temporarily unavailable. Please try again.";
-      return NextResponse.json({ error: message }, { status: response.status });
+      if (response.status === 429) {
+        return NextResponse.json(
+          { error: "The Digital Twin is receiving too many questions. Please try again shortly." },
+          { status: 429 },
+        );
+      }
+      return NextResponse.json(
+        { error: "The Digital Twin is temporarily unavailable. Please try again." },
+        { status: 503 },
+      );
     }
 
     const answer = data?.choices?.[0]?.message?.content?.trim();
