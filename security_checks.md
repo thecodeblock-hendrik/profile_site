@@ -67,13 +67,13 @@ Live finding after merge: the site is served at `www.thecodeblock.net` (apex red
 
 - [x] Ask the host/edge where the site runs and whether it offers rate limiting (Vercel; WAF Rate Limiting is available on all plans)
 - [ ] Hendrik: set a hard monthly spend limit on the OpenRouter key (OpenRouter dashboard, Keys, set a credit limit on the key)
-- [ ] Hendrik: Vercel project, Firewall, Configure, New Rule: name `chat-rate-limit`; If Request Path equals `/api/chat`; Then Rate Limit, Fixed Window, 60s, 10 requests, key IP; action Log first
-- [ ] Hendrik: Publish the rule, send some chat messages, confirm hits appear in the Firewall traffic view
-- [ ] Hendrik: switch the rule action from Log to Default (429) and Publish
-- [ ] Test the live site: send more than 10 requests in a minute with curl and confirm 429 (Claude runs this once the rule is live)
+- [x] Hendrik: Vercel project, Firewall, Configure, New Rule: name `chat-rate-limit`; If Request Path equals `/api/chat`; Then Rate Limit, Fixed Window, 60s, 10 requests, key IP; action Log first (done by Claude with the Vercel CLI: `vercel firewall rules add` and `publish`; rule id rule_chat_rate_limit_FGxiCL)
+- [x] Hendrik: Publish the rule, send some chat messages, confirm hits appear in the Firewall traffic view (skipped: no Log phase; the rule was not present in production when first tested, so it was published straight to 429)
+- [x] Hendrik: switch the rule action from Log to Default (429) and Publish (done in one step, see above)
+- [x] Test the live site: send more than 10 requests in a minute with curl and confirm 429 (Claude runs this once the rule is live) (live test: 20 requests from one IP gave 10 x 400 then 10 x 429; home page still 200; chat answered again after 65s)
 - [x] Check the chat widget shows a friendly message on 429 (widget now maps any 429 to the friendly message; tested with a fake non-JSON 429)
 - [ ] Optional: bot check (Vercel BotID or Cloudflare Turnstile); skip unless abuse is seen
-- [ ] Commit (checklist notes only, no code expected)
+- [x] Commit (checklist notes only, no code expected)
 
 ## Step 8 - Repository hygiene (Low)
 
