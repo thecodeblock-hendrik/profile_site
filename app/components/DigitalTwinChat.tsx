@@ -67,7 +67,7 @@ export default function DigitalTwinChat() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: nextMessages }),
       });
-      const data = (await response.json()) as { answer?: string; error?: string };
+      const data = (await response.json().catch(() => ({}))) as { answer?: string; error?: string };
 
       if (!response.ok || !data.answer) {
         throw new Error(data.error || "Something went wrong. Please try again.");
