@@ -72,7 +72,7 @@ Live finding after merge: the site is served at `www.thecodeblock.net` (apex red
 - [x] Hendrik: switch the rule action from Log to Default (429) and Publish (done in one step, see above)
 - [x] Test the live site: send more than 10 requests in a minute with curl and confirm 429 (Claude runs this once the rule is live) (live test: 20 requests from one IP gave 10 x 400 then 10 x 429; home page still 200; chat answered again after 65s)
 - [x] Check the chat widget shows a friendly message on 429 (widget now maps any 429 to the friendly message; tested with a fake non-JSON 429)
-- [ ] Optional: bot check (Vercel BotID or Cloudflare Turnstile); skip unless abuse is seen
+- [x] Optional: bot check (Vercel BotID or Cloudflare Turnstile); skip unless abuse is seen (skipped by choice: no abuse seen, the rate limit is enough for now)
 - [x] Commit (checklist notes only, no code expected)
 
 ## Step 8 - Repository hygiene (Low)
@@ -91,10 +91,10 @@ Live finding after merge: the site is served at `www.thecodeblock.net` (apex red
 - [x] Manual browser test of the full site and chat (live www.thecodeblock.net: 7/7 images, clean console, chat answered)
 - [x] Update `security.md`: mark each finding fixed or accepted (Status column added to the summary table)
 - [x] Open PR, merge, deploy, and re-check headers on the live site (PRs #10-#13 merged and live; headers re-checked on www; /linkedin.pdf returns 404)
-- [ ] Schedule a recurring `npm audit` (monthly) (not done: needs a decision, e.g. a Claude Code scheduled routine or a GitHub Dependabot setting)
+- [x] Schedule a recurring `npm audit` (monthly) (done differently: GitHub Dependabot alerts enabled on 2026-10-24; 0 open alerts. Dependabot security-update PRs are not enabled)
 
 ## Still open
 
 - [ ] Hendrik: set the OpenRouter credit limit on the API key (Step 7)
 - [ ] Hendrik: decide on purging `linkedin.pdf` from git history (Step 8)
-- [ ] Hendrik: decide how to run the monthly `npm audit` (Step 9)
+- [x] Hendrik: decide how to run the monthly `npm audit` (Dependabot alerts)
