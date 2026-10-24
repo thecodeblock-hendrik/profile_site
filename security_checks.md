@@ -77,10 +77,11 @@ Live finding after merge: the site is served at `www.thecodeblock.net` (apex red
 
 ## Step 8 - Repository hygiene (Low)
 
-- [ ] Open `linkedin.pdf` and check for phone, address or other private details
-- [ ] If private details exist: remove from the repo, add to `.gitignore`, and decide whether to purge history
-- [ ] Update `CLAUDE.md` if `linkedin.pdf` moves
-- [ ] Commit
+- [x] Open `linkedin.pdf` and check for phone, address or other private details (found: personal mobile number and personal Gmail address; repo is public; no home address or ID details)
+- [x] Remove `linkedin.pdf` from the repo (`git rm --cached`, local copy kept) and add it to `.gitignore`
+- [x] Update `CLAUDE.md` if `linkedin.pdf` moves (marked local only and gitignored)
+- [ ] Decision for Hendrik: purge `linkedin.pdf` from git history (needs a force-push of `main`; the number stays visible in old commits, forks and clones until then). See the note in the PR
+- [x] Commit
 
 ## Step 9 - Final verification
 

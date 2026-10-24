@@ -24,7 +24,7 @@ Personal portfolio site for Hendrik Oosthuizen, branded "the codeblock" (https:/
 | `app/components/DigitalTwinChat.tsx` | Client chat widget, posts to `/api/chat` |
 | `app/api/chat/route.ts` | Server route calling OpenRouter (`openai/gpt-oss-120b`) with a verified career profile as system prompt |
 | `CODEBASE_TUTORIAL.md` | Beginner walkthrough of the codebase |
-| `linkedin.pdf` | Source profile for the career facts |
+| `linkedin.pdf` | Source profile for the career facts (local only and gitignored: contains personal contact details) |
 
 ## Commands
 

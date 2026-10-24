@@ -6,3 +6,6 @@ out/
 *.tsbuildinfo
 .DS_Store
 .vercel/
+
+# personal source documents (contain contact details)
+linkedin.pdf
