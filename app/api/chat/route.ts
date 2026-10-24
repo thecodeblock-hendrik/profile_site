@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 
+const MAX_BODY_CHARS = 32_000;
+const MAX_MESSAGES = 10;
+
 type ChatMessage = {
   role: "user" | "assistant";
   content: string;
@@ -74,9 +77,23 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  if (request.headers.get("content-type")?.split(";")[0].trim() !== "application/json") {
+    return NextResponse.json({ error: "Unsupported content type." }, { status: 415 });
+  }
+
+  const contentLength = Number(request.headers.get("content-length") ?? 0);
+  if (contentLength > MAX_BODY_CHARS) {
+    return NextResponse.json({ error: "Request too large." }, { status: 413 });
+  }
+
+  const text = await request.text();
+  if (text.length > MAX_BODY_CHARS) {
+    return NextResponse.json({ error: "Request too large." }, { status: 413 });
+  }
+
   let body: unknown;
   try {
-    body = await request.json();
+    body = JSON.parse(text);
   } catch {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
@@ -86,11 +103,16 @@ export async function POST(request: NextRequest) {
       ? (body as { messages: unknown }).messages
       : null;
 
-  if (!Array.isArray(messages) || messages.length === 0 || !messages.every(isChatMessage)) {
+  if (!Array.isArray(messages) || messages.length === 0) {
     return NextResponse.json({ error: "Please enter a valid question." }, { status: 400 });
   }
 
-  const recentMessages = messages.slice(-10).map(({ role, content }) => ({
+  const recent = messages.slice(-MAX_MESSAGES);
+  if (!recent.every(isChatMessage) || recent[recent.length - 1].role !== "user") {
+    return NextResponse.json({ error: "Please enter a valid question." }, { status: 400 });
+  }
+
+  const recentMessages = recent.map(({ role, content }) => ({
     role,
     content: content.trim(),
   }));
