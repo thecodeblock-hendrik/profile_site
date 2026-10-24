@@ -4,6 +4,10 @@ export const runtime = "nodejs";
 
 const MAX_BODY_CHARS = 32_000;
 const MAX_MESSAGES = 10;
+const ALLOWED_ORIGINS = new Set([
+  "https://thecodeblock.net",
+  ...(process.env.NODE_ENV === "development" ? ["http://localhost:3000"] : []),
+]);
 
 type ChatMessage = {
   role: "user" | "assistant";
@@ -75,6 +79,10 @@ export async function POST(request: NextRequest) {
       { error: "The Digital Twin is not configured yet." },
       { status: 503 },
     );
+  }
+
+  if (!ALLOWED_ORIGINS.has(request.headers.get("origin") ?? "")) {
+    return NextResponse.json({ error: "Forbidden." }, { status: 403 });
   }
 
   if (request.headers.get("content-type")?.split(";")[0].trim() !== "application/json") {
