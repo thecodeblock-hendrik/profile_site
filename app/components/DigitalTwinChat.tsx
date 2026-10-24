@@ -69,6 +69,10 @@ export default function DigitalTwinChat() {
       });
       const data = (await response.json().catch(() => ({}))) as { answer?: string; error?: string };
 
+      if (response.status === 429) {
+        throw new Error("The Digital Twin is receiving too many questions. Please try again shortly.");
+      }
+
       if (!response.ok || !data.answer) {
         throw new Error(data.error || "Something went wrong. Please try again.");
       }
